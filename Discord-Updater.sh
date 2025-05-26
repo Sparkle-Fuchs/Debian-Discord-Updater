@@ -51,7 +51,25 @@ fi
 if test $1 == "--remove"; then
 	echo "Discord-Updater was Removed from your system! No more updates for Discord will be installed..."
 	rm -rf /usr/sbin/discord-updater.sh
+ 	rm -rf /etc/cron.d/discord-updater
 	exit 42
+fi
+
+if test $1 == "--uninstall"; then
+	pkill -f discord
+	apt purge discord -y
+	echo "Discord and Discord-Updater was Removed from your system! No more updates for Discord will be installed..."
+	rm -rf /usr/sbin/discord-updater.sh
+ 	rm -rf /etc/cron.d/discord-updater
+	exit 621
+fi
+
+if test $1 == "--reinstall"; then
+	pkill -f discord
+	apt purge discord -y
+ 	Discord-Install-Routine
+	echo "Discord was reinstalled!"
+	exit 0
 fi
 
 echo -e "This script is used to easily and automatically update the Discord client. Unfortunately, it still does not have a repository. If Discord is not installed on the target system, this script will install Discord automatically."
