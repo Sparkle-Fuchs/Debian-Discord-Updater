@@ -11,5 +11,6 @@ This script can be started with the following options:<br/>
 <br/>
 <br/>
 <br/>
+[!NOTE]
 The following packages are required to run this script: wget, curl.<br/>
 If the packages are not installed, they will be installed by this script. If the script is removed using by “--remove”, wget, curl and discord will not be uninstalled. If you no longer need these packages, you can remove them using by “apt remove” or “apt purge”.<br/>
