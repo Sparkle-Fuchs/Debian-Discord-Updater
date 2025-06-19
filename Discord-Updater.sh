@@ -1,12 +1,12 @@
 #!/bin/bash
 
 Discord-Install-Routine(){
-	pkill -f discord
 	mkdir /tmp/discord
   	echo -e "Download latest version of Discord...   (Press Ctrl + C to cancel)"
 	wget -O /tmp/discord/discord-installer.deb "https://discord.com/api/download/stable?platform=linux&format=deb"
 	apt install /tmp/discord/discord-installer.deb -y && rm -rf /tmp/discord
 }
+
 
 # Add script to crontab @reboot >> /etc/cron.d/discord-update
 Discord-Update-On-Reboot(){
@@ -56,7 +56,6 @@ if test $1 == "--remove"; then
 fi
 
 if test $1 == "--uninstall"; then
-	pkill -f discord
 	apt purge discord -y
 	echo "Discord and Discord-Updater was Removed from your system! No more updates for Discord will be installed..."
 	rm -rf /usr/sbin/discord-updater.sh
@@ -65,7 +64,6 @@ if test $1 == "--uninstall"; then
 fi
 
 if test $1 == "--reinstall"; then
-	pkill -f discord
 	apt purge discord -y
  	Discord-Install-Routine
 	echo "Discord was reinstalled!"
